@@ -1,0 +1,17 @@
+[package]
+name = "video-streaming"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = { version = "1.49.0", features = ["full"] }
+tracing = "0.1"
+wtransport = "0.6.1"
+bytes = "1.4.0"
+tracing-subscriber = "0.3.22"
+anyhow = "1.0.100"
+serde_json = "1.0.149"
+serde = { version = "1.0.228", features = ["derive"] }
+
+[dev-dependencies]
+tokio = { version = "1.49.0", features = ["full"] }
