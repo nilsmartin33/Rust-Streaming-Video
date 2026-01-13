@@ -2,16 +2,15 @@ use std::time::Duration;
 use tracing::{error, info_span, Instrument};
 use wtransport::{Endpoint, Identity, ServerConfig};
 use wtransport::endpoint::endpoint_side::Server;
+use tracing_subscriber::filter::LevelFilter;
+use tracing_subscriber::EnvFilter;
 
 use crate::connection::handle_connection;
 
-const SERVER_PORT: u16 = 4433;
-const CERT_PATH: &str = "cert.pem";
-const KEY_PATH: &str = "key.pem";
-pub async fn server_config() -> anyhow::Result<ServerConfig> {
+pub async fn server_config_with_identity(identity: Identity) -> anyhow::Result<ServerConfig> {
     let config = ServerConfig::builder()
-        .with_bind_default(SERVER_PORT)
-        .with_identity(Identity::load_pemfiles(CERT_PATH, KEY_PATH).await?)
+        .with_bind_default(0)
+        .with_identity(identity)
         .keep_alive_interval(Some(Duration::from_secs(5)))
         .build();
     Ok(config)
@@ -36,8 +35,13 @@ pub fn validate_video(path: &str) -> anyhow::Result<()> {
 }
 
 pub fn init_logging() {
+    let env_filter = EnvFilter::builder()
+        .with_default_directive(LevelFilter::INFO.into())
+        .from_env_lossy();
+
     tracing_subscriber::fmt()
         .with_target(true)
         .with_level(true)
+        .with_env_filter(env_filter)
         .init();
 }
