@@ -51,13 +51,13 @@ impl HttpServer {
         Ok(())
     }
 
-    fn build_router(cert_digest: &Sha256Digest, webtransport_port: u16) -> Router {
+    fn build_router(cert_digest: &Sha256Digest, transport_port: u16) -> Router {
         let cert_digest_str = cert_digest.fmt(Sha256DigestFmt::BytesArray);
 
         let root = move || async move {
             Html(
                 html_content::INDEX_HTML
-                    .replace("${WEBTRANSPORT_PORT}", &webtransport_port.to_string())
+                    .replace("${TRANSPORT_PORT}", &transport_port.to_string())
             )
         };
 

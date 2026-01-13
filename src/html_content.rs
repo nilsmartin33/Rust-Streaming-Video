@@ -8,7 +8,7 @@ pub const INDEX_HTML: &str = r#"
     <script src="client.js"></script>
 </head>
 <body>
-    <h1>🎬 Video Streaming - WebTransport Demo</h1>
+    <h1> Video Streaming - WebTransport Demo</h1>
 
     <div class="section">
         <h2>1. Establish Connection</h2>
@@ -21,9 +21,9 @@ pub const INDEX_HTML: &str = r#"
 
     <div class="section">
         <h2>2. Send Commands</h2>
-        <button onclick="sendStartVideo()" id="btnStartVideo" disabled>▶️ START_VIDEO</button>
-        <button onclick="sendGetMetadata()" id="btnMetadata" disabled>📊 GET_METADATA</button>
-        <button onclick="sendCustom()" id="btnCustom" disabled>💬 Custom Command</button>
+        <button onclick="sendStartVideo()" id="btnStartVideo" disabled> START_VIDEO</button>
+        <button onclick="sendGetMetadata()" id="btnMetadata" disabled> GET_METADATA</button>
+        <button onclick="sendCustom()" id="btnCustom" disabled> Custom Command</button>
     </div>
 
     <div class="section">

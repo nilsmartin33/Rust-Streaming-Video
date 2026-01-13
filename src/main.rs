@@ -86,8 +86,8 @@ async fn load_identity() -> Result<Identity> {
         }
     }
 
-    info!("  Development mode: using self-signed certificate");
-    info!("  This will work immediately in Chrome without certificate errors");
+    info!("Development mode: using self-signed certificate");
+    info!("This will work immediately in Chrome without certificate errors");
     Identity::self_signed(["localhost", "127.0.0.1", "::1"])
         .map_err(|e| anyhow::anyhow!("Failed to create self-signed certificate: {}", e))
 }

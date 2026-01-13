@@ -115,7 +115,7 @@ async fn handle_unknown_command(
     stream.write_all(b"ACK").await?;
     stream.finish().await?;
 
-    info!("✅ ACK sent");
+    info!("ACK sent");
     Ok(())
 }
 
@@ -137,7 +137,7 @@ async fn handle_uni_stream(
     stream.write_all(b"ACK_UNI").await?;
     stream.finish().await?;
 
-    info!("✅ UNI ACK sent");
+    info!("UNI ACK sent");
 
     Ok(())
 }
@@ -152,6 +152,6 @@ async fn handle_datagram_stream(
 
     connection.send_datagram(b"ACK_DGRAM")?;
 
-    info!("✅ Datagram ACK sent");
+    info!("Datagram ACK sent");
     Ok(())
 }
